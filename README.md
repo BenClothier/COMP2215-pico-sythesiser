@@ -1,1 +1,6 @@
-# COMP2215-pico-sythesiser
+# Pico Synthesiser
+## Description
+// TODO
+
+## Task Classification
+// TODO
