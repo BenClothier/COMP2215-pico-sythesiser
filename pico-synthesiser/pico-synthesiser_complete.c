@@ -32,14 +32,14 @@ float getVoltageFromADC() {
 
 int pwm_set_freq(uint32_t freq) {
     uint32_t f_sys = clock_get_hz(clk_sys);
-	float divider = f_sys / 1000000UL;
-	pwm_set_clkdiv(slice_num, divider);
+    float divider = f_sys / 1000000UL;
+    pwm_set_clkdiv(slice_num, divider);
 
-	uint32_t top = 1000000UL / freq - 1;
-	pwm_set_wrap(slice_num, top);
+    uint32_t top = 1000000UL / freq - 1;
+    pwm_set_wrap(slice_num, top);
 
-	uint16_t level = (top + 1) * duty / 100 - 1;
-	pwm_set_chan_level(slice_num, 0, level);
+    uint16_t level = (top + 1) * duty / 100 - 1;
+    pwm_set_chan_level(slice_num, 0, level);
 }
 
 void on_pwm_wrap() {
@@ -56,14 +56,14 @@ int main() {
     adc_select_input(VOLTAGE_IN_PIN - 26);
 
     gpio_set_function(AUDIO_OUT_PIN, GPIO_FUNC_PWM);
-	slice_num = pwm_gpio_to_slice_num(AUDIO_OUT_PIN);
+    slice_num = pwm_gpio_to_slice_num(AUDIO_OUT_PIN);
 
-	pwm_clear_irq(slice_num);
-	pwm_set_irq_enabled(slice_num, true);
-	irq_set_exclusive_handler(PWM_IRQ_WRAP, on_pwm_wrap);
-	irq_set_enabled(PWM_IRQ_WRAP, true);
+    pwm_clear_irq(slice_num);
+    pwm_set_irq_enabled(slice_num, true);
+    irq_set_exclusive_handler(PWM_IRQ_WRAP, on_pwm_wrap);
+    irq_set_enabled(PWM_IRQ_WRAP, true);
 
-	pwm_set_enabled(slice_num, true);
+    pwm_set_enabled(slice_num, true);
 
     for (;;);
 }
