@@ -51,12 +51,12 @@ int main() {
 
     // Initialise PWM and on-wrap routine
     gpio_set_function(AUDIO_OUT_PIN, GPIO_FUNC_PWM);
-	slice_num = pwm_gpio_to_slice_num(AUDIO_OUT_PIN);
-	pwm_clear_irq(slice_num);
-	pwm_set_irq_enabled(slice_num, true);
-	irq_set_exclusive_handler(PWM_IRQ_WRAP, on_pwm_wrap);
-	irq_set_enabled(PWM_IRQ_WRAP, true);
-	pwm_set_enabled(slice_num, true);
+    slice_num = pwm_gpio_to_slice_num(AUDIO_OUT_PIN);
+    pwm_clear_irq(slice_num);
+    pwm_set_irq_enabled(slice_num, true);
+    irq_set_exclusive_handler(PWM_IRQ_WRAP, on_pwm_wrap);
+    irq_set_enabled(PWM_IRQ_WRAP, true);
+    pwm_set_enabled(slice_num, true);
 
     for (;;);
 }
