@@ -9,6 +9,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+float input_voltage = 3.3f;
+double highest_freq = 3000;
+double lowest_freq = 0;
+
 int main() {
     stdio_init_all();
     gpio_init(25);
@@ -17,9 +21,16 @@ int main() {
     adc_select_input(0);
 
     while(true) {
-        uint16_t result = adc_read();
-        const float conversion_factor = 3.3f / (1 << 12);
-        printf("Raw value: 0x%03x, voltage: %f V\n", result, result * conversion_factor);
+        float voltage = getVoltageFromADC();
+        printf("Voltage: %f V\n", result * conversion_factor, );
         sleep_ms(1000);
     }
+}
+
+double voltageToFreq(float voltage) {
+    return highest_freq - (voltage / input_voltage) * (highest_freq - lowest_freq)
+}
+
+float getVoltageFromADC() {
+    return adc_read() * (input_voltage / (1 << 12))
 }
