@@ -8,3 +8,7 @@ MEDIUM
 ## Help
 - [The Pico in C: Basic PWM](https://www.i-programmer.info/programming/hardware/14849-the-pico-in-c-basic-pwm.html)
 - [Basic Pico ADC in C](https://www.okdo.com/getting-started/get-started-with-raspberry-pi-pico-gpio-c-c/)
+
+
+[My Potential Divider](./images/board.png)
+[Circuit Diagram](./images/circuit.png)
