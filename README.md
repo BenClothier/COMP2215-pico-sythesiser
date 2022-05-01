@@ -1,6 +1,6 @@
 # Pico Synthesiser
 ## Description
-In this task you will make a synthesiser using the PWM and a light dependent resistor. You will need to implement the function `pwm_set_freq(uint32_t freq)` to set the PWM to generate a wave at the given frequency and then create a small circuit to input an adjustable voltage into the ADC.
+In this task you will make a synthesiser using the PWM and a potential divider. You will need to implement the function `pwm_set_freq(uint32_t freq)` to tell the PWM to generate a wave at the given frequency, and then create a small potential divider circuit to input an adjustable voltage into the ADC (I did this using a light dependent resistor).
 
 ## Task Classification
 MEDIUM since there are multiple aspects to this task that require a fair amount of reading about the pico's ADC and PWM.
